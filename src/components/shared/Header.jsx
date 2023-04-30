@@ -1,16 +1,34 @@
-import {Link} from "react-router-dom";
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Link, NavLink} from "react-router-dom";
 
 const Header = () => {
+
+    const navBar = [
+        {id: 1, route: '/news', title: 'News'},
+        {id: 2, route: '/destination', title: 'Destination'},
+        {id: 3, route: '/blog', title: 'Blog'},
+        {id: 4, route: '/contact', title: 'Contact'},
+    ]
+
+
     return (
-        <nav className="flex w-full items-center justify-between bg-opacity-30">
-            <img className=" w-32" src="logo.png" alt="" />
-            <input placeholder="Search Your Destination" className="placeholder:text-white bg-blend-darken px-4 py-2 text-white bg-transparent border-white border-2 rounded-full" type="text" />
+        <nav className="container mx-auto flex w-full items-center justify-between py-5">
+            <Link to={"/"}><img className="invert w-32" src="logo.png" alt="" /></Link>
+            <div className="bg-blend-darken px-4 py-2 text-white bg-white bg-opacity-25 border-white border-2 rounded-xl" >
+                <FontAwesomeIcon icon={faMagnifyingGlass} /><input className="pl-4 placeholder:text-white bg-transparent outline-none w-96" placeholder="Search Your Destination" type="text" />
+            </div>
             <div className="text-white nav-items py-2">
-                <Link to={'/news'}>News</Link>
-                <Link to={'/destination'}>Destination</Link>
-                <Link to={'/blog'}>Blog</Link>
-                <Link to={'/contact'}>Contact</Link>
-                <Link to={'/login'}>Login</Link>
+                {
+                    navBar.map(nav => <NavLink className={({isActive, isPending}) =>
+                        isActive
+                            ? "bg-sky-500"
+                            : isPending
+                                ? "bg-gray-600"
+                                : ""
+                    } to={nav.route} key={nav.id}>{nav.title}</NavLink>)
+                }
+                <Link to={'/login'}><button className="px-4 py-2 bg-yellow-400 text-black rounded-md">Login</button></Link>
             </div>
         </nav>
     );
