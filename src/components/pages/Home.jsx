@@ -1,9 +1,8 @@
 
 const Home = () => {
     return (
-        <div className='h-screen flex justify-center items-center bg-slate-400 text-5xl font-bold'>
-            this is home
-            <h1>Hellow world</h1>
+        <div className="">
+            <h1>this is home Hellow world</h1>
         </div>
     );
 };

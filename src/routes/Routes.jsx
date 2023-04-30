@@ -1,9 +1,17 @@
 import {createBrowserRouter} from "react-router-dom";
+import HomeLayout from "../layout/HomeLayout";
+import Home from "../components/pages/Home";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <div className='h-screen flex justify-center items-center bg-slate-400 text-5xl font-bold'>Hello world!</div>,
+        element: <HomeLayout></HomeLayout>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>
+            }
+        ]
     },
 ]);
 
