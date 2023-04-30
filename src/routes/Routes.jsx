@@ -6,6 +6,9 @@ import Destination from "../components/pages/Destination";
 import Blog from "../components/pages/Blog";
 import Contact from "../components/pages/Contact";
 import ErrorPage from "../components/ErrorPage";
+import LoginLayout from "../layout/LoginLayout";
+import Login from "../components/signin-login/Login";
+import SignUp from "../components/signin-login/SignUp";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +38,20 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "/",
+        element: <LoginLayout></LoginLayout>,
+        children: [
+            {
+                path: "/login",
+                element: <Login></Login>
+            },
+            {
+                path: "/register",
+                element: <SignUp></SignUp>
+            }
+        ]
+    }
 ]);
 
 export default router

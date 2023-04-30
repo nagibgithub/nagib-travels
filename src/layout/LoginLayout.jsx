@@ -2,7 +2,7 @@ import {Outlet} from "react-router-dom";
 import Header from "../components/shared/Header";
 import Footer from "../components/shared/Footer";
 
-const HomeLayout = () => {
+const LoginLayout = () => {
     return (
         <div className="static">
             <div className='bg-[url("1.png")] bg-auto min-h-screen'>
@@ -16,4 +16,4 @@ const HomeLayout = () => {
     );
 };
 
-export default HomeLayout;
+export default LoginLayout;
