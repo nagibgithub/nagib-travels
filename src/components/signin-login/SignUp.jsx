@@ -37,14 +37,7 @@ const SignUp = () => {
                         <label><span className="text-white">Confirm Password <FontAwesomeIcon icon={show ? faEye : faEyeSlash}></FontAwesomeIcon></span></label>
                         <input name="confirm" type={show ? 'text' : 'password'} placeholder="retype your password" className="input-field" autoComplete="new-password" required />
                     </div>
-                    <div className="my-2">
-                        {
-                            show ?
-                                <div onClick={() => setShow(false)} className="text-white cursor-pointer">Hide Password</div>
-                                :
-                                <div onClick={() => setShow(true)} className="text-white cursor-pointer">Show Password</div>
-                        }
-                    </div>
+                    <div onClick={() => setShow(!show)} className="text-white cursor-pointer my-2 w-max">{show ? "Hide" : "Show"} Password</div>
                     <div className="form-control py-2">
                         <input name="submit" className="btn btn-primary" type="submit" value="Sign Up" />
                     </div>
@@ -52,11 +45,11 @@ const SignUp = () => {
                 </form>
                 <hr />
                 <h1 className="text-white text-lg font-semibold text-center py-1">Or you can also sign up with: </h1>
-                <button className="mt-2 border-2 rounded-lg w-full text-center py-2 px-4 flex justify-center items-center hover:bg-sky-300 hover:bg-opacity-25 active:bg-opacity-50">
+                <button className="google-signin-button">
                     <img className="w-6" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="" />
                     <h1 className="text-white pl-2 text-lg">Sign up with Google</h1>
                 </button>
-                <button className="mt-4 border-2 rounded-lg w-full text-center py-2 px-4 flex justify-center items-center hover:bg-sky-300 hover:bg-opacity-25 active:bg-opacity-50">
+                <button className="google-signin-button">
                     <img className="w-6" src="https://upload.wikimedia.org/wikipedia/en/0/04/Facebook_f_logo_%282021%29.svg" alt="" />
                     <h1 className="text-white pl-2 text-lg">Sign up with Facebook</h1>
                 </button>
