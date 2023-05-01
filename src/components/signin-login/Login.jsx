@@ -1,20 +1,40 @@
+import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useState} from "react";
 import {Link} from "react-router-dom";
 
 const Login = () => {
 
+    const [show, setShow] = useState(false)
+
+    const handleLogIn = event => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+    }
 
     return (
         <>
             <h1 className="text-5xl text-center font-bold text-white">Login now!</h1>
             <div className="w-96 mx-auto mt-10 mb-5 backdrop-blur-lg rounded-2xl border-2 border-white shadow-lg shadow-white p-8">
-                <form>
+                <form onSubmit={handleLogIn}>
                     <div className="form-control py-2">
                         <label ><span className="text-white">Email</span></label>
-                        <input type="text" placeholder="email" className="input input-bordered" />
+                        <input name="email" type="email" placeholder="email" className="input-field" />
                     </div>
                     <div className="form-control py-2">
-                        <label ><span className="text-white">Password</span></label>
-                        <input type="text" placeholder="password" className="input input-bordered" />
+                        <label ><span className="text-white">Password <FontAwesomeIcon icon={show ? faEye : faEyeSlash}></FontAwesomeIcon></span></label>
+                        <input name="password" type={show ? 'text' : 'password'} placeholder="password" className="input-field" />
+                        <div className="my-2">
+                            {
+                                show ?
+                                    <div onClick={() => setShow(false)} className="text-white cursor-pointer">Hide Password</div>
+                                    :
+                                    <div onClick={() => setShow(true)} className="text-white cursor-pointer">Show Password</div>
+                            }
+                        </div>
                         <label ><a href="#" className="text-white link-hover">Forgot password?</a></label>
                     </div>
                     <div className="form-control py-2">

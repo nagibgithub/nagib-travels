@@ -1,6 +1,11 @@
+import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useState} from "react";
 import {Link} from "react-router-dom";
 
 const SignUp = () => {
+
+    const [show, setShow] = useState(false)
 
     const handleSignUp = event => {
         event.preventDefault()
@@ -18,19 +23,27 @@ const SignUp = () => {
                 <form onSubmit={handleSignUp}>
                     <div className="form-control py-2">
                         <label><span className="text-white">Full Name</span></label>
-                        <input name="name" type="text" placeholder="Your Name" className="input input-bordered" required />
+                        <input name="name" type="text" placeholder="Your Name" className="input-field" required />
                     </div>
                     <div className="form-control py-2">
                         <label><span className="text-white">Email</span></label>
-                        <input name="email" type="email" placeholder="email" className="input input-bordered" autoComplete="current-email" required />
+                        <input name="email" type="email" placeholder="email" className="input-field" autoComplete="current-email" required />
                     </div>
                     <div className="form-control py-2">
-                        <label><span className="text-white">Password</span></label>
-                        <input name="password" type="password" placeholder="password" className="input input-bordered" autoComplete="new-password" required />
+                        <label><span className="text-white">Password <FontAwesomeIcon icon={show ? faEye : faEyeSlash}></FontAwesomeIcon></span></label>
+                        <input name="password" type={show ? 'text' : 'password'} placeholder="password" className="input-field" autoComplete="new-password" required />
                     </div>
                     <div className="form-control py-2">
-                        <label><span className="text-white">Confirm Password</span></label>
-                        <input name="confirm" type="password" placeholder="password" className="input input-bordered" autoComplete="new-password" required />
+                        <label><span className="text-white">Confirm Password <FontAwesomeIcon icon={show ? faEye : faEyeSlash}></FontAwesomeIcon></span></label>
+                        <input name="confirm" type={show ? 'text' : 'password'} placeholder="retype your password" className="input-field" autoComplete="new-password" required />
+                    </div>
+                    <div className="my-2">
+                        {
+                            show ?
+                                <div onClick={() => setShow(false)} className="text-white cursor-pointer">Hide Password</div>
+                                :
+                                <div onClick={() => setShow(true)} className="text-white cursor-pointer">Show Password</div>
+                        }
                     </div>
                     <div className="form-control py-2">
                         <input name="submit" className="btn btn-primary" type="submit" value="Sign Up" />
