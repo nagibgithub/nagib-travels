@@ -28,7 +28,7 @@ const Header = () => {
                                 : ""
                     } to={nav.route} key={nav.id}>{nav.title}</NavLink>)
                 }
-                <Link to={'/login'}><button className="px-4 py-2 bg-yellow-400 text-black rounded-md">Login</button></Link>
+                <Link to={'/register'}><button className="px-4 py-2 bg-yellow-400 text-black rounded-md">Sign Up</button></Link>
             </div>
         </nav>
     );

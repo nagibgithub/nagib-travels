@@ -1,9 +1,13 @@
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../provider/AuthProvider";
+import {GoogleAuthProvider} from "firebase/auth";
 
 const Login = () => {
+
+    const {googleLogIn} = useContext(AuthContext);
 
     const [show, setShow] = useState(false)
 
@@ -13,6 +17,10 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+    }
+
+    const googleLoginHandler = () => {
+        googleLogIn()
     }
 
     return (
@@ -27,7 +35,7 @@ const Login = () => {
                     <div className="form-control py-2">
                         <label ><span className="text-white">Password <FontAwesomeIcon icon={show ? faEye : faEyeSlash}></FontAwesomeIcon></span></label>
                         <input name="password" type={show ? 'text' : 'password'} autoComplete="current-password" placeholder="password" className="input-field" required />
-                        <div onClick={() => setShow(!show)} className="text-white cursor-pointer my-2 w-max">{show?"Hide":"Show"} Password</div>
+                        <div onClick={() => setShow(!show)} className="text-white cursor-pointer my-2 w-max">{show ? "Hide" : "Show"} Password</div>
                         <label ><a href="#" className="text-white link-hover">Forgot password?</a></label>
                     </div>
                     <div className="form-control py-2">
@@ -36,7 +44,7 @@ const Login = () => {
                 </form>
                 <hr />
                 <h1 className="text-white text-lg font-semibold text-center py-1">Or you can also log in with: </h1>
-                <button className="google-signin-button">
+                <button onClick={googleLoginHandler} className="google-signin-button">
                     <img className="w-6" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="" />
                     <h1 className="text-white pl-2 text-lg">Log in with Google</h1>
                 </button>
